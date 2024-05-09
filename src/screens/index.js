@@ -1,1 +1,2 @@
-export {default as ListContact} from './Contacts/ListContact.js';
+export {default as ListContact}     from './Contacts/ListContact';
+export {default as ContactDetail}   from './ContactDetail/ContactDetail';

@@ -10,8 +10,7 @@ export const styles = StyleSheet.create({
     backgroundColor: color.white,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: StatusBar.currentHeight + PADDING,
-    paddingBottom: PADDING,
+    paddingTop: StatusBar.currentHeight * 2 + PADDING,
     width: '100%',
   },
   title: {
