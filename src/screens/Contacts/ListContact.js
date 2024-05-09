@@ -25,7 +25,7 @@ const ListContact = () => {
 
   useEffect(() => {
     if (data.length > 0) {
-      setDataList(data);
+      setDataList(data.reverse());
     }
   }, [data]);
 
@@ -72,7 +72,7 @@ const ListContact = () => {
       if (filterData.length === 0) {
         setDataList([]);
       } else {
-        setDataList(filterData);
+        setDataList(filterData.reverse());
       }
     },
     [data],

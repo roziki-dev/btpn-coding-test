@@ -1,21 +1,22 @@
+import {ToastAndroid} from 'react-native';
 import {ContactService} from '../../../services/contacts';
 import {TYPE} from '../../types';
-import {updateSeen} from '../lastSeen/LastSeen';
 
-export const getContactDetail = id => {
+export const deleteContact = id => {
   return dispatch => {
     dispatch(load());
-    ContactService.get(id)
+    console.log('delete id: ', id);
+    ContactService.deleteContact(id)
       .then(res => {
         let responseData = {};
         responseData.data = res.data?.data;
-        responseData.status = res?.status;
-        responseData.message = res.data?.message;
+        responseData.status = res?.status || 200;
         dispatch(success(responseData));
-        dispatch(updateSeen(responseData.data));
+        ToastAndroid.show('Success.', ToastAndroid.SHORT);
       })
 
       .catch(err => {
+        ToastAndroid.show('Sorry, Something wrong!', ToastAndroid.SHORT);
         dispatch(fail({...err, status: 400}));
       });
   };
@@ -23,26 +24,20 @@ export const getContactDetail = id => {
 
 const load = () => {
   return {
-    type: TYPE.CONTACT_DETAIL,
+    type: TYPE.CONTACT_DELETE,
   };
 };
 
 const success = payload => {
   return {
-    type: TYPE.CONTACT_DETAIL_SUCCESS,
+    type: TYPE.CONTACT_DELETE_SUCCESS,
     payload: payload,
   };
 };
 
 const fail = payload => {
   return {
-    type: TYPE.CONTACT_DETAIL_FAIL,
+    type: TYPE.CONTACT_DELETE_FAIL,
     payload: payload,
-  };
-};
-
-export const contactDetailClear = () => {
-  return dispatch => {
-    dispatch(load());
   };
 };

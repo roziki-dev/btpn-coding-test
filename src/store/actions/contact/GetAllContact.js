@@ -8,7 +8,7 @@ export const getListContact = () => {
       .then(res => {
         let responseData = {};
         responseData.data = res.data?.data;
-        responseData.status = res.data?.status;
+        responseData.status = res?.status;
         responseData.message = res.data?.message;
         dispatch(success(responseData));
       })
