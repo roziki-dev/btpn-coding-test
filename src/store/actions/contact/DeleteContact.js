@@ -5,7 +5,6 @@ import {TYPE} from '../../types';
 export const deleteContact = id => {
   return dispatch => {
     dispatch(load());
-    console.log('delete id: ', id);
     ContactService.deleteContact(id)
       .then(res => {
         let responseData = {};

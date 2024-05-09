@@ -78,6 +78,12 @@ const ListContact = () => {
     [data],
   );
 
+  const onAddNew = () => {
+    requestAnimationFrame(() => {
+      navigation.navigate('ContactForm');
+    });
+  };
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     dispatch(getListContact());
@@ -122,7 +128,7 @@ const ListContact = () => {
         removeClippedSubviews={true}
         initialNumToRender={10}
       />
-      <FloatingIcon />
+      <FloatingIcon onPress={onAddNew} />
     </View>
   );
 };
