@@ -4,7 +4,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // TO-DO: import all screen here
-import {ListContact} from '../screens';
+import {ListContact, ContactDetail} from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +17,7 @@ export const MainRouter = () => {
             headerShown: false,
           }}>
           <Stack.Screen name="MainRoute" component={ListContact} />
+          <Stack.Screen name="ContactDetail" component={ContactDetail} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
