@@ -1,6 +1,9 @@
 export const color = {
   primary: '#000',
   secondary: '#fff',
-  title: '#153448',
-  descriotion: '#3C5B6F',
+  title: '#3C4248',
+  description: '#63696F',
+  white: '#fff',
+  smoke: '#F3F4F5',
+  placeholder: '#CBCDCF',
 };
