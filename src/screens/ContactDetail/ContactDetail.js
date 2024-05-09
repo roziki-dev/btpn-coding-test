@@ -21,7 +21,7 @@ const ContactDetail = () => {
 
   const {data, status, loading} = useSelector(state => state.contactDetail);
   const dataDelete = useSelector(state => state.deleteContact);
-  console.log('status ', status);
+
   useEffect(() => {
     const id = route.params?.id;
     if (id) {
