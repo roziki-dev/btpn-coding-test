@@ -1,11 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {color, font} from '../../styles';
+import {PADDING} from '../Header/HeaderHome.style';
 
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: PADDING,
     paddingVertical: 12,
   },
   center: {
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
   img: {
     width: 50,
     height: 50,
-    borderRadius: 14,
+    borderRadius: 16,
     backgroundColor: color.smoke,
   },
   fullName: {

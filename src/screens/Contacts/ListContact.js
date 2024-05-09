@@ -7,6 +7,7 @@ import {HeaderHome, ItemList} from '../../components';
 import {styles} from './ListContact.style';
 import {color} from '../../styles';
 import {getListContact} from '../../store/actions';
+import {HorizontalList} from './HorizontalList';
 
 const ListContact = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,11 @@ const ListContact = () => {
         keyExtractor={(item, index) => item.id}
         contentContainerStyle={styles.contentContainerStyle}
         ListHeaderComponent={
-          <HeaderHome title={'Contacts'} count={data.length} />
+          <HeaderHome
+            title={'Contacts'}
+            count={data.length}
+            renderHorizontal={<HorizontalList />}
+          />
         }
         ListEmptyComponent={
           <View style={styles.emptyContainer}>
@@ -48,6 +53,7 @@ const ListContact = () => {
         }
         ItemSeparatorComponent={<View style={styles.separator} />}
         removeClippedSubviews={true}
+        initialNumToRender={10}
       />
     </View>
   );

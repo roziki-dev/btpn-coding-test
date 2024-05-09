@@ -1,7 +1,7 @@
 import {Dimensions, StatusBar, StyleSheet} from 'react-native';
 import {color, font} from '../../styles';
 
-const PADDING = 24;
+export const PADDING = 24;
 
 const Screen = Dimensions.get('window');
 
