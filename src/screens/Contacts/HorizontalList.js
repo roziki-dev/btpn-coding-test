@@ -1,12 +1,21 @@
 import React from 'react';
 import {FlatList, Text, View} from 'react-native';
-import {styles} from './HorizontalList.style';
+import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import {ItemListVertical} from '../../components';
+import {styles} from './HorizontalList.style';
 
 export const HorizontalList = ({}) => {
+  const navigation = useNavigation();
+
   const {loading, status} = useSelector(state => state.getAllContact);
   const {data} = useSelector(state => state.lastSeen);
+
+  const onNavigate = id => {
+    requestAnimationFrame(() => {
+      navigation.navigate('ContactDetail', {id});
+    });
+  };
 
   const _renderItem = ({item, index}) => {
     return (
@@ -15,6 +24,7 @@ export const HorizontalList = ({}) => {
         firstName={item.firstName}
         age={item.age}
         imgUrl={item.photo}
+        onPress={() => onNavigate(item.id)}
       />
     );
   };

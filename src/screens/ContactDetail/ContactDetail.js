@@ -3,10 +3,15 @@ import {Image, StatusBar, Text, View} from 'react-native';
 import {BlurView} from '@react-native-community/blur';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {FooterDetail, HeaderDetail} from '../../components';
+import {ButtonIcon, FooterDetail, HeaderDetail} from '../../components';
 
 import {styles} from './ContactDetail.style';
-import {contactDetailClear, getContactDetail} from '../../store/actions';
+import {
+  contactDetailClear,
+  getContactDetail,
+  getListContact,
+} from '../../store/actions';
+import {color} from '../../styles';
 
 const ContactDetail = () => {
   const dispatch = useDispatch();
@@ -21,6 +26,7 @@ const ContactDetail = () => {
     }
     return () => {
       dispatch(contactDetailClear());
+      dispatch(getListContact());
     };
   }, [route.params.id]);
 
@@ -66,11 +72,17 @@ const ContactDetail = () => {
         )}
         <View style={{flex: 1}}>
           <Text style={styles.name}>
-            {fullName},
-            <Text style={styles.age}> {data?.age || ''}</Text>
+            {fullName},<Text style={styles.age}> {data?.age || ''}</Text>
           </Text>
           <View style={styles.flexHorizontal}>
-
+            <ButtonIcon icon={'edit'} title={'Edit Contact'} />
+            <ButtonIcon
+              icon={'delete'}
+              // title={'Delete'}
+              iconColor={color.white}
+              btnStyle={{backgroundColor: color.orange}}
+              textStyle={{color: color.white}}
+            />
           </View>
         </View>
         <FooterDetail onPress={goBack} />

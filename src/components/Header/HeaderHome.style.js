@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: StatusBar.currentHeight * 2 + PADDING,
-    paddingBottom: PADDING,
     width: '100%',
   },
   title: {

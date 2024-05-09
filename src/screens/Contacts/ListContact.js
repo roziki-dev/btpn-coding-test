@@ -109,7 +109,7 @@ const ListContact = () => {
         ListEmptyComponent={
           <Empty
             loading={loading}
-            dataLenght={dataList.length}
+            dataLength={dataList.length}
             isSearch={true}
             message={message}
           />

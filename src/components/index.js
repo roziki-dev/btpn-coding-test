@@ -4,3 +4,4 @@ export * from './List/ItemList';
 export * from './List/ItemListVertical';
 export * from './Empty/Empty';
 export * from './Footer/FooterDetail';
+export * from './Button/ButtonIcon';

@@ -60,5 +60,6 @@ export const styles = StyleSheet.create({
   flexHorizontal: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center'
   },
 });
