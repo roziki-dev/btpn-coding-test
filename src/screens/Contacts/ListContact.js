@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, RefreshControl, StatusBar, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import {Empty, HeaderHome, ItemList} from '../../components';
+import {Empty, FloatingIcon, HeaderHome, ItemList} from '../../components';
 
 // styles
 import {styles} from './ListContact.style';
@@ -85,7 +85,11 @@ const ListContact = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor={color.secondary} barStyle={'dark-content'} />
+      <StatusBar
+        translucent
+        backgroundColor={color.secondary}
+        barStyle={'dark-content'}
+      />
       <FlatList
         data={dataList}
         renderItem={_renderItem}
@@ -118,6 +122,7 @@ const ListContact = () => {
         removeClippedSubviews={true}
         initialNumToRender={10}
       />
+      <FloatingIcon />
     </View>
   );
 };

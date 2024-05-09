@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 16,
   },
   btn: {
-    backgroundColor: color.primary,
     paddingVertical: 14,
     borderRadius: 14
   },
