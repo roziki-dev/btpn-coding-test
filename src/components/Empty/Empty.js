@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import {styles} from './Empty.style';
 import {color} from '../../styles';
 
-export const Empty = ({loading, isSearch}) => {
+export const Empty = ({loading, isSearch, dataLength}) => {
   const TitleEmpty = useMemo(() => {
     if (isSearch) {
       return 'No Results Found';
