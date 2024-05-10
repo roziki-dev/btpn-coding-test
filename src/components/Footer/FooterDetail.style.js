@@ -1,7 +1,5 @@
-import {Dimensions, StatusBar, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {color, font} from '../../styles';
-
-const Screen = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,12 +7,13 @@ export const styles = StyleSheet.create({
   },
   btn: {
     paddingVertical: 14,
-    borderRadius: 14
+    borderRadius: 14,
   },
   btnTitle: {
     fontFamily: font.poppins_medium,
     textAlign: 'center',
     color: color.white,
-    fontSize: 16
+    fontSize: 16,
+    marginBottom: -4,
   },
 });

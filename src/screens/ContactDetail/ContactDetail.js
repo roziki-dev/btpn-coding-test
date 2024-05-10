@@ -1,7 +1,11 @@
 import React, {useCallback, useEffect} from 'react';
 import {Alert, Image, StatusBar, Text, View} from 'react-native';
 import {BlurView} from '@react-native-community/blur';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {ButtonIcon, Empty, FooterDetail, HeaderDetail} from '../../components';
 
@@ -23,29 +27,38 @@ const ContactDetail = () => {
   const dataDelete = useSelector(state => state.deleteContact);
 
   useEffect(() => {
-    const id = route.params?.id;
-    if (id) {
-      dispatch(getContactDetail(id));
-    }
-
     return () => {
-      dispatch(contactDetailClear());
       dispatch(contactDetailClear());
       dispatch(getListContact());
     };
-  }, [route.params.id]);
+  }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      const id = route.params?.id;
+      if (id) {
+        dispatch(getContactDetail(id));
+      }
+    }, [route.params?.id]),
+  );
 
   useEffect(() => {
     if (dataDelete?.status === 200 || dataDelete?.status === 201) {
       goBack();
     }
-  }, [dataDelete]);
+  }, [dataDelete?.status]);
 
   const goBack = () => {
     requestAnimationFrame(() => {
       navigation.goBack();
     });
   };
+
+  const onEdit = useCallback(() => {
+    requestAnimationFrame(() => {
+      navigation.navigate('ContactForm', data);
+    });
+  }, [data]);
 
   const fullName = `${data?.firstName || ''} ${data?.lastName || ''}`;
 
@@ -107,7 +120,11 @@ const ContactDetail = () => {
               {fullName},<Text style={styles.age}> {data?.age || ''}</Text>
             </Text>
             <View style={styles.flexHorizontal}>
-              <ButtonIcon icon={'edit'} title={'Edit Contact'} />
+              <ButtonIcon
+                icon={'edit'}
+                title={'Edit Contact'}
+                onPress={onEdit}
+              />
               <ButtonIcon
                 icon={'delete'}
                 iconColor={color.white}

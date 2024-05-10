@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, RefreshControl, StatusBar, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {Empty, FloatingIcon, HeaderHome, ItemList} from '../../components';
 
 // styles
@@ -19,9 +19,11 @@ const ListContact = () => {
 
   const {data, message, loading} = useSelector(state => state.getAllContact);
 
-  useEffect(() => {
-    dispatch(getListContact());
-  }, [dispatch]);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getListContact());
+    }, []),
+  );
 
   useEffect(() => {
     if (data.length > 0) {

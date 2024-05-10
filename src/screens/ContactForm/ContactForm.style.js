@@ -52,6 +52,7 @@ export const styles = StyleSheet.create({
     fontFamily: font.poppins,
     fontSize: 16,
     marginVertical: 6,
+    paddingBottom: 7,
   },
   wrapInput: {marginTop: 24},
   ph16: {
@@ -61,5 +62,17 @@ export const styles = StyleSheet.create({
     fontFamily: font.poppins,
     fontSize: 16,
     paddingVertical: 10,
+  },
+  center: {textAlign: 'center'},
+  warning: {
+    fontFamily: font.poppins,
+    fontSize: 12,
+    paddingVertical: 10,
+    color: color.primary,
+    fontStyle: 'italic',
+    marginTop: -4,
+  },
+  loadingBottom: {
+    paddingBottom: 16,
   },
 });
