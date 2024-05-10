@@ -11,9 +11,7 @@ const logger = createLogger({
     //TO-DO: Log hanya untuk development
     if (__DEV__ && typeof action === 'object') {
       if (action?.payload && typeof action?.payload === 'object') {
-        // console.log(
-        //   `[${action?.type}] => ${JSON.stringify(action?.payload || {})}`,
-        // );
+        console.log(`[${action?.type}] => ${typeof action?.payload}`);
       }
     }
   },

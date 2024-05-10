@@ -1,8 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, RefreshControl, StatusBar, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {useNavigation} from '@react-navigation/native';
-import {Empty, HeaderHome, ItemList} from '../../components';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {Empty, FloatingIcon, HeaderHome, ItemList} from '../../components';
 
 // styles
 import {styles} from './ListContact.style';
@@ -19,9 +19,11 @@ const ListContact = () => {
 
   const {data, message, loading} = useSelector(state => state.getAllContact);
 
-  useEffect(() => {
-    dispatch(getListContact());
-  }, [dispatch]);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getListContact());
+    }, []),
+  );
 
   useEffect(() => {
     if (data.length > 0) {
@@ -78,6 +80,12 @@ const ListContact = () => {
     [data],
   );
 
+  const onAddNew = () => {
+    requestAnimationFrame(() => {
+      navigation.navigate('ContactForm');
+    });
+  };
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     dispatch(getListContact());
@@ -85,7 +93,11 @@ const ListContact = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent backgroundColor={color.secondary} barStyle={'dark-content'} />
+      <StatusBar
+        translucent
+        backgroundColor={color.secondary}
+        barStyle={'dark-content'}
+      />
       <FlatList
         data={dataList}
         renderItem={_renderItem}
@@ -118,6 +130,7 @@ const ListContact = () => {
         removeClippedSubviews={true}
         initialNumToRender={10}
       />
+      <FloatingIcon onPress={onAddNew} />
     </View>
   );
 };
