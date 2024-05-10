@@ -160,7 +160,11 @@ const ContactForm = () => {
 
   return (
     <View style={styles.container}>
-      <HeaderForm onBackPress={goBack} style={styles.ph16} />
+      <HeaderForm
+        onBackPress={goBack}
+        style={styles.ph16}
+        title={route?.params?.id ? 'Edit Contact' : 'Add New Contact'}
+      />
       <ScrollView style={styles.container} contentContainerStyle={styles.body}>
         <TouchableOpacity
           style={[
