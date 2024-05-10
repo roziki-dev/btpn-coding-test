@@ -5,3 +5,5 @@ export * from './List/ItemListVertical';
 export * from './Empty/Empty';
 export * from './Footer/FooterDetail';
 export * from './Button/ButtonIcon';
+export * from './Floating/Floating';
+export * from './Header/HeaderForm';

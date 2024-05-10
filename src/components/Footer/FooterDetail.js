@@ -1,12 +1,20 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
+import {Text, TouchableOpacity, View} from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
 import {styles} from './FooterDetail.style';
 
-export const FooterDetail = ({onPress}) => {
+export const FooterDetail = ({onPress, title = 'Back to home', style}) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <TouchableOpacity style={styles.btn} onPress={onPress}>
-        <Text style={styles.btnTitle}>Back to home</Text>
+        <LinearGradient
+          colors={['#E8873C', '#ED37C2']}
+          start={{x: 0, y: -1}}
+          end={{x: 1, y: 0}}
+          style={styles.btn}>
+          <Text style={styles.btnTitle}>{title}</Text>
+        </LinearGradient>
       </TouchableOpacity>
     </View>
   );
